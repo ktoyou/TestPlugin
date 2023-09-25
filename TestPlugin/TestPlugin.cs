@@ -10,7 +10,7 @@ using Resto.Front.Api.UI;
 
 namespace Resto.Front.Api.TestPlugin
 {
-    [PluginLicenseModuleId(0021023901)]
+    [PluginLicenseModuleId(0025092023)]
     public class TestPlugin : IFrontPlugin
     {
         private List<IDisposable> _disposables;
