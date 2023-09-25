@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<Manifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <FileName>Resto.Front.Api.TestPlugin.dll</FileName>
+  <TypeName>Resto.Front.Api.TestPlugin.TestPlugin</TypeName>
+  <ApiVersion>V8</ApiVersion>
+  <LicenseModuleId>0021023901</LicenseModuleId>
+</Manifest>
