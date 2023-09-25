@@ -19,18 +19,18 @@ namespace Resto.Front.Api.TestPlugin
         {
             _disposables = new List<IDisposable>()
             {
-                PluginContext.Operations.AddButtonToOrderEditScreen("Кол-во позиций", ShowOrderPositions),
-                PluginContext.Notifications.NavigatingToPaymentScreen.Subscribe(ShowPopup)
+                PluginContext.Operations.AddButtonToOrderEditScreen("Кол-во позиций", ShowOrderPositionsHandler),
+                PluginContext.Notifications.NavigatingToPaymentScreen.Subscribe(ShowOrderInformationHandler)
             };
             PluginContext.Operations.AddNotificationMessage("Плагин «TestPlugin» загружен.", "TestPlugin", TimeSpan.FromSeconds(30));
         }
 
-        private void ShowPopup((IOrder order, IPointOfSale pos, IOperationService os, IViewManager vm, INavigatingToPaymentScreenOperationContext context) obj)
+        private void ShowOrderInformationHandler((IOrder order, IPointOfSale pos, IOperationService os, IViewManager vm, INavigatingToPaymentScreenOperationContext context) obj)
         {
             obj.vm.ShowOkPopup($"Информация о заказе #{obj.order.Number}", $"Тип заказа «{obj.order.OrderType.Name}»");
         }
 
-        private void ShowOrderPositions((IOrder order, IOperationService os, IViewManager vm) obj)
+        private void ShowOrderPositionsHandler((IOrder order, IOperationService os, IViewManager vm) obj)
         {
             var orderPositions = obj.order.Items.Select(item => ((IOrderProductItem)item).Amount).Sum();
             obj.vm.ShowOkPopup("Кол-во позиций", $"Количество позиций в заказе: {orderPositions}");
